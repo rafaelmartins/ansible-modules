@@ -119,7 +119,7 @@ def run_module():
 
     re_archive = r'["\'](%s([^"\']+)%s)["\']' % (re.escape(prefix),
                                                  re.escape(module.params['file_extension']))
-    m = re.search(re_archive, index_data)
+    m = re.search(re_archive, index_data.decode('utf-8'))
     if not m:
         module.fail_json(msg='Failed to detect distfile archive', **result)
 
